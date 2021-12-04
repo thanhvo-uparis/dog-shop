@@ -1,9 +1,18 @@
 import React from 'react';
+import DogCard from './DogCard';
 
-const DogsPage = () => {
+const DogsPage = (props) => {
     return(
         <div>
-            <p>Présente tous les chiens à vent</p>
+            {props.allDogs.map((dog) => {
+                return (
+                    <div key={dog.id}>
+                        <DogCard name={dog.name} breed={dog.breed} description={dog.description} price={dog.price} imgDog={dog.imageUrl}  />
+                    </div>
+                )
+            }
+            )}
+
         </div>
     )
 }
