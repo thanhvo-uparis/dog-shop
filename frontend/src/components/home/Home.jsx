@@ -1,9 +1,11 @@
 import React from 'react';
+import css from './home.css';
+
 
 const Home = () => {
-    return(
+    return (
         <div>
-            <p>Ici Home Page</p>
+            <p className="welcome">Welcome to the Dog Shop</p>
         </div>
     )
 }
