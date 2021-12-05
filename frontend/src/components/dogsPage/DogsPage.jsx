@@ -3,7 +3,7 @@ import DogCard from './DogCard';
 
 const DogsPage = (props) => {
     return(
-        <div>
+        <div className="dogs-container">
             {props.allDogs.map((dog) => {
                 return (
                     <div key={dog.id}>

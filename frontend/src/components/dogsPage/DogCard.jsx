@@ -1,6 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
+import './dogs.css';
 
 const DogCard = (props) => {
+    const [isAdded, setAdded] = useState(false);
+    
+    function called() {
+        return setAdded(true);
+    }
+
+    /*
+    const called = () => {
+        return 
+    }
+
+    */
     return (
         <div className="dogs">
             <div className="dogs-info">
@@ -16,7 +29,11 @@ const DogCard = (props) => {
             <div className="dog-price">
                 <p>{props.price}$</p>
             </div>
-            <button className="dogs-btn">ADD TO CART</button>
+            {isAdded ? (
+                <button className="dogs-btn-disabled">ADDED</button>
+            ) : (
+                <button className="dogs-btn" onClick={called}>ADD TO CART</button>
+            )}
         </div>
     )
 }
