@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import css from './App.css';
 import axios from 'axios';
 
@@ -8,9 +8,12 @@ import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Home from "./components/home/Home";
 import DogsPage from "./components/dogsPage/DogsPage";
 import Cart from "./components/cart/Cart";
+import { CartContext } from "./context/CartContext";
 
 const App = () => {
   const [myDogs, setMyDogs] = useState([]); 
+  const [myCart, setCart] = useState([{}]);
+  
 
   useEffect(() => {
       function getData() {
@@ -24,16 +27,18 @@ const App = () => {
 
   return(
     <div>
-      <Router>
-         <NavBar/>
-          <div className="page-container">
-            <Routes>
-              <Route path="/" element={<Home/>} />
-              <Route path="/dogs" element={<DogsPage allDogs={myDogs}/>} />
-              <Route path="/payement" element={<Cart/>} />
-            </Routes>
-          </div>
-        </Router>
+      <CartContext.Provider value={{myCart, setCart}}>
+        <Router>
+          <NavBar/>
+            <div className="page-container">
+              <Routes>
+                <Route path="/" element={<Home/>} />
+                <Route path="/dogs" element={<DogsPage allDogs={myDogs}/>} />
+                <Route path="/payement" element={<Cart/>} />
+              </Routes>
+            </div>
+          </Router>
+      </CartContext.Provider>
     </div>
   )
 }

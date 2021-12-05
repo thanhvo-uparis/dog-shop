@@ -1,19 +1,23 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { CartContext } from "../../context/CartContext";
 import './dogs.css';
 
 const DogCard = (props) => {
+    const {name, price, imgDog} = props;
     const [isAdded, setAdded] = useState(false);
-    
-    function called() {
-        return setAdded(true);
-    }
+    const {setCart} = useContext(CartContext);
 
-    /*
     const called = () => {
-        return 
-    }
-
-    */
+        
+            setAdded(true);
+            const newItems = {
+                name: name,
+                price: price,
+                imgDog: imgDog,
+            };
+            setCart((item) => [...item, newItems]);
+        }
+        
     return (
         <div className="dogs">
             <div className="dogs-info">
