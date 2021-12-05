@@ -5,7 +5,7 @@ import './dogs.css';
 const DogCard = (props) => {
     const {name, price, imgDog} = props;
     const [isAdded, setAdded] = useState(false);
-    const {setCart} = useContext(CartContext);
+    const {setCart, setTotal} = useContext(CartContext);
 
     const called = () => {
         
@@ -16,6 +16,7 @@ const DogCard = (props) => {
                 imgDog: imgDog,
             };
             setCart((item) => [...item, newItems]);
+            setTotal((item) => (item += Number(props.price)));
         }
         
     return (
