@@ -5,10 +5,16 @@
 }
 
 html {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 .welcome {
     font-size: 20px;
     font-weight: 600;
+}
+
+.welcome img {
+    height: 30px;
+    object-fit: cover;
+    margin: 0 10px
 }
